@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las Voces del Río · REDA · Comprensión lectora con saberes Makaguán · Grado 5°</title>
+<meta name="description" content="Recurso Educativo Digital Abierto (REDA) intercultural para fortalecer la comprensión lectora en estudiantes de grado 5° de la Institución Educativa Indígena El Vigía, con saberes del pueblo Makaguán (Hitnü), Arauquita, Arauca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Mulish:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f7f3e8;
+    --crema-2:#efe6d2;
+    --tinta:#2b2519;
+    --tinta-suave:#5f5443;
+    --rio:#1f7a8c;
+    --rio-osc:#155e6b;
+    --selva:#3f7d4e;
+    --selva-osc:#2c5d39;
+    --tierra:#a9612f;
+    --maiz:#d99a16;
+    --achiote:#c0492f;
+    --violeta:#6b4e9a;
+    --linea:#e2d6ba;
+    --sombra:0 14px 34px rgba(60,44,20,.16);
+    --sombra-sm:0 6px 16px rgba(60,44,20,.12);
+    --m1:#1f7a8c; --m1-bg:#e2f1f3;
+    --m2:#cf8f12; --m2-bg:#fbf0d4;
+    --m3:#3f7d4e; --m3-bg:#e4f1e6;
+    --m4:#a9612f; --m4-bg:#f4e7db;
+    --m5:#6b4e9a; --m5-bg:#ece6f5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:'Mulish',sans-serif;color:var(--tinta);line-height:1.65;
+    background:
+      radial-gradient(1100px 480px at 88% -6%, #d8ecef 0%, transparent 55%),
+      radial-gradient(900px 460px at 4% 6%, #e6f0e3 0%, transparent 55%),
+      var(--crema);
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.15;margin:0 0 .35em;font-weight:600}
+  a{color:var(--rio)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+  /* NAV */
+  header.top{position:sticky;top:0;z-index:50;background:rgba(247,243,232,.93);backdrop-filter:blur(8px);border-bottom:2px solid var(--linea)}
+  .nav{display:flex;align-items:center;gap:14px;padding:10px 22px;max-width:1100px;margin:0 auto;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:600;font-size:1.12rem;color:var(--rio-osc);cursor:pointer;white-space:nowrap}
+  .brand .mk{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--rio);box-shadow:var(--sombra-sm);font-size:1rem}
+  .menu{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .menu button{font-family:'Mulish';font-weight:700;font-size:.92rem;cursor:pointer;border:2px solid transparent;background:transparent;color:var(--tinta-suave);padding:7px 12px;border-radius:999px;transition:.18s}
+  .menu button:hover{background:#fff;color:var(--tinta);box-shadow:var(--sombra-sm)}
+  .menu button.active{background:var(--rio);color:#fff}
+  .menu button[data-go="m1"].active{background:var(--m1)}
+  .menu button[data-go="m2"].active{background:var(--m2)}
+  .menu button[data-go="m3"].active{background:var(--m3)}
+  .menu button[data-go="m4"].active{background:var(--m4)}
+  .menu button[data-go="m5"].active{background:var(--m5)}
+
+  .page{display:none;animation:fade .45s ease}
+  .page.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  section{padding:44px 0}
+
+  /* HERO */
+  .hero{margin:22px auto 0;border-radius:26px;overflow:hidden;box-shadow:var(--sombra);background:linear-gradient(120deg,#155e6b 0%,#1f7a8c 45%,#3f7d4e 100%);position:relative;color:#fff}
+  .hero-inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;min-height:310px}
+  .hero-text{padding:38px 40px}
+  .hero-text .kicker{font-family:'Mulish';font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:.78rem;opacity:.92}
+  .hero-text h1{font-size:clamp(2.1rem,5vw,3.3rem);font-weight:600;margin:.12em 0 .18em;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+  .hero-text p{font-size:1.05rem;max-width:44ch;opacity:.96}
+  .hero-tag{display:inline-block;margin-top:8px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.5);padding:5px 14px;border-radius:999px;font-family:'Mulish';font-weight:700;font-size:.86rem}
+  .hero-art{position:relative;min-height:310px}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+  @media(max-width:760px){.hero-inner{grid-template-columns:1fr}.hero-art{display:none}}
+
+  .lead{font-size:1.1rem;color:var(--tinta-suave);max-width:64ch}
+
+  /* module cards */
+  .grid-mod{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:30px}
+  .mod-card{border-radius:22px;padding:24px 22px;cursor:pointer;color:#fff;position:relative;overflow:hidden;box-shadow:var(--sombra);transition:transform .18s,box-shadow .18s;text-align:left;border:none;font-family:inherit}
+  .mod-card:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 20px 40px rgba(60,44,20,.24)}
+  .mod-card .num{font-family:'Fraunces';font-weight:600;font-size:2.3rem;opacity:.55;line-height:1}
+  .mod-card h3{font-size:1.3rem;margin:.2em 0 .12em;color:#fff}
+  .mod-card .tipo{font-weight:800;font-size:.86rem;opacity:.95;text-transform:uppercase;letter-spacing:.4px}
+  .mod-card .go{margin-top:14px;font-family:'Mulish';font-weight:700;font-size:.9rem;display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.22);padding:6px 13px;border-radius:999px}
+  .mod-card .blob{position:absolute;right:-14px;bottom:-26px;font-size:5.4rem;opacity:.2}
+  .c1{background:linear-gradient(135deg,#2090a4,#155e6b)}
+  .c2{background:linear-gradient(135deg,#e0a51d,#b97d10)}
+  .c3{background:linear-gradient(135deg,#4a9159,#2c5d39)}
+  .c4{background:linear-gradient(135deg,#b96d36,#8c4e22)}
+  .c5{background:linear-gradient(135deg,#7d5cb0,#574288)}
+
+  .feature{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:26px}
+  .box{background:#fff;border:2px solid var(--linea);border-radius:18px;padding:20px;box-shadow:var(--sombra-sm)}
+  .box h4{color:var(--rio-osc);display:flex;align-items:center;gap:8px;font-size:1.08rem}
+  .box .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--crema-2);font-size:1.05rem}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{background:var(--crema-2);border:1.5px solid var(--linea);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.84rem;color:var(--tinta-suave)}
+
+  /* module page */
+  .mod-hero{border-radius:24px;padding:34px 32px;color:#fff;box-shadow:var(--sombra);margin-top:22px;position:relative;overflow:hidden}
+  .mod-hero .crumb{font-family:'Mulish';font-weight:800;opacity:.92;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+  .mod-hero h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600;margin:.12em 0;color:#fff}
+  .mod-hero .obj{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.45);border-radius:16px;padding:14px 18px;margin-top:14px;max-width:64ch;font-weight:600}
+  .mh1{background:linear-gradient(135deg,#2090a4,#134f5a)} .mh2{background:linear-gradient(135deg,#e0a51d,#a06d0d)}
+  .mh3{background:linear-gradient(135deg,#4a9159,#234c2d)} .mh4{background:linear-gradient(135deg,#b96d36,#7a431d)}
+  .mh5{background:linear-gradient(135deg,#7d5cb0,#4c3974)}
+
+  .step{display:flex;gap:14px;align-items:flex-start;margin:34px 0 12px}
+  .step .n{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-family:'Fraunces';font-weight:600;color:#fff;font-size:1.2rem;box-shadow:var(--sombra-sm)}
+  .step h3{margin:0;font-size:1.35rem}
+  .step small{color:var(--tinta-suave);font-weight:700}
+  .panel{background:#fff;border:2px solid var(--linea);border-radius:20px;padding:24px;box-shadow:var(--sombra-sm);margin-top:6px}
+  .nm1{background:var(--m1)} .nm2{background:var(--m2)} .nm3{background:var(--m3)} .nm4{background:var(--m4)} .nm5{background:var(--m5)}
+
+  /* reading text */
+  .lectura{font-family:'Fraunces';font-weight:500;font-size:1.16rem;line-height:1.62;white-space:pre-line;background:var(--crema);border-radius:16px;padding:22px 26px;border-left:6px solid var(--rio)}
+  .lectura .titulo{display:block;font-weight:600;font-size:1.32rem;margin-bottom:10px}
+  .lectura .firma{display:block;font-size:.9rem;font-weight:600;color:var(--tinta-suave);margin-top:14px;font-family:'Mulish'}
+  .by{display:inline-block;font-size:.78rem;font-weight:800;color:var(--selva-osc);background:#e4f1e6;border:1.5px solid #bfe0c6;padding:3px 12px;border-radius:999px;margin-bottom:10px}
+
+  /* video as thumbnail link */
+  .video-link{display:block;position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:var(--sombra);background:#11100e;border:3px solid #fff;text-decoration:none}
+  .video-link img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .3s}
+  .video-link:hover img{transform:scale(1.05);filter:brightness(.78)}
+  .video-link .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45));transition:.3s}
+  .video-link:hover .veil{background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.55))}
+  .video-link .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:#ff0000;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:.2s}
+  .video-link:hover .play{transform:translate(-50%,-50%) scale(1.12);background:#ff2323}
+  .video-link .play::after{content:"";border-style:solid;border-width:15px 0 15px 26px;border-color:transparent transparent transparent #fff;margin-left:6px}
+  .video-link .cta{position:absolute;left:0;right:0;bottom:0;padding:16px;text-align:center;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent)}
+  .video-link .cta b{display:inline-flex;align-items:center;gap:8px;font-family:'Fraunces';font-weight:600;font-size:1.08rem;color:#fff;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:9px 20px;backdrop-filter:blur(3px)}
+  .video-link:hover .cta b{background:var(--maiz);color:#3a2b06;border-color:var(--maiz)}
+  .video-link .yt{position:absolute;top:12px;left:14px;font-family:'Mulish';font-weight:800;font-size:.76rem;color:#fff;background:rgba(0,0,0,.55);padding:4px 11px;border-radius:8px}
+  .src-tag{display:inline-flex;align-items:center;gap:7px;font-size:.83rem;font-weight:700;color:var(--tinta-suave);margin-top:10px}
+  .src-tag b{color:var(--achiote)}
+
+  .res-link{display:flex;gap:14px;align-items:center;background:var(--crema-2);border:2px dashed var(--rio);border-radius:16px;padding:16px 18px;text-decoration:none;color:var(--tinta);transition:.18s;margin-bottom:10px}
+  .res-link:hover{background:#fff;transform:translateX(4px)}
+  .res-link .men{flex:none;width:48px;height:48px;border-radius:12px;background:#0b4d8f;color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:600;font-size:.74rem;text-align:center;line-height:1.05}
+  .res-link b{font-family:'Fraunces';font-size:1.02rem}
+  .res-link small{display:block;color:var(--tinta-suave);font-weight:600}
+
+  .q{margin:12px 0;font-weight:700}
+  .q::before{content:"📖 ";}
+
+  /* writing/response */
+  .write-card{background:linear-gradient(135deg,#fffdf6,#f6eed9);border:2px solid var(--linea);border-radius:20px;padding:22px;box-shadow:var(--sombra-sm)}
+  .write-card label{font-family:'Fraunces';font-weight:600;display:block;margin-bottom:8px}
+  textarea.escribe{width:100%;min-height:150px;border:2px solid var(--linea);border-radius:14px;padding:14px;font-family:'Mulish';font-size:1.02rem;line-height:1.6;resize:vertical;background:#fff;color:var(--tinta)}
+  textarea.escribe:focus{outline:none;border-color:var(--maiz);box-shadow:0 0 0 4px #d99a1633}
+  input.escribe{width:100%;border:2px solid var(--linea);border-radius:12px;padding:11px 13px;font-family:'Mulish';font-size:1rem;background:#fff;color:var(--tinta)}
+  input.escribe:focus{outline:none;border-color:var(--maiz)}
+  .tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+  .btn{font-family:'Fraunces';font-weight:600;border:none;border-radius:999px;padding:10px 18px;cursor:pointer;font-size:.95rem;transition:.16s;box-shadow:var(--sombra-sm)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-maiz{background:var(--maiz);color:#3a2b06}
+  .btn-rio{background:var(--rio);color:#fff}
+  .btn-soft{background:#fff;color:var(--tinta);border:2px solid var(--linea)}
+  .counter{font-weight:700;color:var(--tinta-suave);font-size:.9rem;margin-left:auto}
+
+  /* MCQ quiz */
+  .quiz .pregunta{font-weight:700;margin:18px 0 8px;font-size:1.04rem}
+  .quiz .opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 14px;border-radius:13px;border:2px solid var(--linea);background:#fff;font-family:'Mulish';font-weight:600;font-size:1rem;cursor:pointer;transition:.14s;color:var(--tinta)}
+  .quiz .opt:hover{border-color:var(--rio)}
+  .quiz .opt.ok{background:#e4f1e6;border-color:#4fae72;color:#234c2d}
+  .quiz .opt.bad{background:#fbe1dc;border-color:#c0492f}
+  .quiz .opt.disabled{pointer-events:none;opacity:.7}
+  .lvl{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:3px 10px;border-radius:999px;margin-bottom:6px}
+  .lvl-lit{background:#e2f1f3;color:#155e6b} .lvl-inf{background:#e4f1e6;color:#2c5d39} .lvl-cri{background:#ece6f5;color:#4c3974}
+
+  /* ordering */
+  .order-list{list-style:none;padding:0;margin:8px 0 0}
+  .order-list li{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--linea);border-radius:13px;padding:10px 12px;margin:8px 0;cursor:grab;font-weight:700}
+  .order-list li .h{font-family:'Fraunces';color:var(--m2);font-size:1.2rem}
+  .order-list li.drag{opacity:.45}
+  .order-list li.correct{border-color:#4fae72;background:#e4f1e6}
+
+  /* classify */
+  .clasif{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .clasif .item{background:#fff;border:2px solid var(--linea);border-radius:13px;padding:12px 14px}
+  .clasif .item p{margin:0 0 8px;font-weight:700}
+  .clasif .item .ops{display:flex;gap:8px}
+  .clasif .item .ops button{flex:1;border:2px solid var(--linea);background:var(--crema);border-radius:10px;padding:8px;font-family:'Mulish';font-weight:700;cursor:pointer;transition:.14s}
+  .clasif .item .ops button:hover{border-color:var(--m4)}
+  .clasif .item .ops button.ok{background:#e4f1e6;border-color:#4fae72;color:#234c2d}
+  .clasif .item .ops button.bad{background:#fbe1dc;border-color:#c0492f}
+
+  .feedback{margin-top:14px;font-family:'Fraunces';font-weight:600;min-height:24px}
+  .feedback.win{color:var(--selva-osc)}
+
+  .modnav{display:flex;justify-content:space-between;gap:12px;margin-top:40px}
+  .modnav button{flex:1;background:#fff;border:2px solid var(--linea);border-radius:16px;padding:14px;cursor:pointer;font-family:'Fraunces';font-weight:600;color:var(--tinta);transition:.16s;box-shadow:var(--sombra-sm)}
+  .modnav button:hover{border-color:var(--maiz);transform:translateY(-2px)}
+  .modnav small{display:block;color:var(--tinta-suave);font-weight:700;font-size:.76rem;font-family:'Mulish'}
+
+  .note{background:#e2f1f3;border:1.5px solid #b9dde2;border-radius:14px;padding:14px 16px;font-size:.92rem;color:#155e6b;margin-top:18px}
+  .note b{color:#0b4d8f}
+  .note.cultura{background:#f4e7db;border-color:#e3c9a8;color:#7a431d}
+  .note.cultura b{color:#8c4e22}
+
+  footer{background:var(--rio-osc);color:#fff;margin-top:30px;padding:34px 0}
+  footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  footer b{font-family:'Fraunces'}
+  footer small{opacity:.88}
+  .cc{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:4px 10px;font-size:.78rem;margin-top:8px}
+
+  @media(max-width:760px){.menu{width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}}
+  @media print{header.top,.modnav,footer,.menu,.video-link,.tools{display:none!important}.page{display:block!important}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="nav">
+    <div class="brand" onclick="go('inicio')"><span class="mk">🌊</span> Las&nbsp;Voces&nbsp;del&nbsp;Río</div>
+    <nav class="menu" id="menu">
+      <button data-go="inicio" class="active" onclick="go('inicio')">Inicio</button>
+      <button data-go="m1" onclick="go('m1')">1 · Territorio</button>
+      <button data-go="m2" onclick="go('m2')">2 · El Maíz</button>
+      <button data-go="m3" onclick="go('m3')">3 · La Sabana</button>
+      <button data-go="m4" onclick="go('m4')">4 · Los Mayores</button>
+      <button data-go="m5" onclick="go('m5')">5 · Mi Voz</button>
+      <button data-go="eval" onclick="go('eval')">Evaluación</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ INICIO ============ -->
+<div class="page show" id="inicio">
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="kicker">Recurso Educativo Digital Abierto · Grado 5°</div>
+          <h1>Las Voces del Río</h1>
+          <p>Aprendemos a leer y comprender desde lo nuestro: las narraciones, el territorio y los saberes del pueblo Makaguán, a orillas de los ríos de Arauca.</p>
+          <span class="hero-tag">Comprensión lectora intercultural · Saberes Makaguán</span>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdeef0"/><stop offset="1" stop-color="#aedfc6"/></linearGradient>
+              <linearGradient id="agua" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37a0b3"/><stop offset="1" stop-color="#1f7a8c"/></linearGradient>
+            </defs>
+            <rect width="400" height="320" fill="url(#cielo)"/>
+            <circle cx="318" cy="66" r="34" fill="#f3c14b"/>
+            <path d="M0 150 Q120 120 230 150 T400 145 V210 H0Z" fill="#5aa86a"/>
+            <path d="M0 178 Q140 152 250 180 T400 172 V230 H0Z" fill="#3f7d4e"/>
+            <path d="M0 210 C120 250 280 250 400 210 L400 320 L0 320 Z" fill="url(#agua)"/>
+            <path d="M40 320 C120 268 280 268 360 320 Z" fill="#9fd3dc" opacity=".5"/>
+            <g stroke="#2c5d39" stroke-width="4" fill="none" stroke-linecap="round">
+              <path d="M70 178 q4 -42 0 -64"/><path d="M70 116 q-20 -6 -30 -22"/><path d="M70 116 q20 -6 30 -22"/><path d="M70 122 q-22 2 -34 -8"/><path d="M70 122 q22 2 34 -8"/>
+            </g>
+            <g stroke="#234c2d" stroke-width="4" fill="none" stroke-linecap="round">
+              <path d="M330 182 q4 -36 0 -56"/><path d="M330 128 q-18 -6 -26 -20"/><path d="M330 128 q18 -6 26 -20"/><path d="M330 134 q-20 2 -30 -6"/><path d="M330 134 q20 2 30 -6"/>
+            </g>
+            <path d="M150 256 q50 -16 100 0 q-10 14 -50 14 q-40 0 -50 -14Z" fill="#7a431d"/>
+            <path d="M150 256 q50 -16 100 0" fill="none" stroke="#5a3115" stroke-width="3"/>
+            <g transform="translate(196,232)"><path d="M0 0 l6 -22 l4 22Z" fill="#caa15a"/></g>
+            <g transform="translate(96,236)" fill="#f7f3e8" opacity=".9"><ellipse cx="0" cy="0" rx="13" ry="7"/><path d="M10 -2 q14 -10 22 -2 q-10 6 -22 2Z"/><circle cx="-9" cy="-3" r="3"/><path d="M-9 0 l-6 8" stroke="#f7f3e8" stroke-width="2"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2 style="font-size:2rem;color:var(--rio-osc)">¡Bienvenidos, lectoras y lectores Makaguán! 🌿</h2>
+      <p class="lead">Este recurso es un camino de cinco estaciones para leer mejor. En cada una vamos a leer una narración de nuestro territorio, ver un video, explorar materiales del Ministerio de Educación y resolver actividades para entender lo que leemos en tres niveles: lo que el texto <b>dice</b>, lo que el texto nos <b>hace pensar</b> y lo que nosotros <b>opinamos</b>. Toca una estación para comenzar.</p>
+
+      <div class="grid-mod">
+        <button class="mod-card c1" onclick="go('m1')"><div class="num">01</div><div class="tipo">Nivel literal</div><h3>El Territorio que Habla</h3><span class="go">Entrar →</span><span class="blob">🏞️</span></button>
+        <button class="mod-card c2" onclick="go('m2')"><div class="num">02</div><div class="tipo">Mito de origen</div><h3>El Origen del Maíz</h3><span class="go">Entrar →</span><span class="blob">🌽</span></button>
+        <button class="mod-card c3" onclick="go('m3')"><div class="num">03</div><div class="tipo">Nivel inferencial</div><h3>Las Huellas en la Sabana</h3><span class="go">Entrar →</span><span class="blob">🐢</span></button>
+        <button class="mod-card c4" onclick="go('m4')"><div class="num">04</div><div class="tipo">Oralidad y comparación</div><h3>La Palabra de los Mayores</h3><span class="go">Entrar →</span><span class="blob">🔥</span></button>
+        <button class="mod-card c5" onclick="go('m5')"><div class="num">05</div><div class="tipo">Nivel crítico</div><h3>Mi Voz Intercultural</h3><span class="go">Entrar →</span><span class="blob">🗣️</span></button>
+      </div>
+    </section>
+
+    <section style="padding-top:10px">
+      <h2 style="color:var(--rio-osc)">¿Cómo trabaja cada estación?</h2>
+      <div class="feature">
+        <div class="box"><h4><span class="ico">📖</span> Leemos lo nuestro</h4><p>Cada estación abre con una narración del territorio y la cultura Makaguán, recreada con la orientación de los sabedores.</p></div>
+        <div class="box"><h4><span class="ico">🎬</span> Aprendemos viendo</h4><p>Un video corto explica una estrategia de lectura: identificar, inferir o valorar lo que leemos.</p></div>
+        <div class="box"><h4><span class="ico">🏛️</span> Exploramos</h4><p>Recursos abiertos del Ministerio de Educación (Colombia Aprende y Etnoeducación) para seguir aprendiendo.</p></div>
+        <div class="box"><h4><span class="ico">✍️</span> Comprendemos y creamos</h4><p>Actividades de comprensión y creación que puedes guardar en tu portafolio digital.</p></div>
+      </div>
+
+      <h2 style="color:var(--rio-osc);margin-top:40px">Los tres niveles que vamos a fortalecer</h2>
+      <div class="pill-row">
+        <span class="pill">Nivel literal · lo que el texto dice</span>
+        <span class="pill">Nivel inferencial · lo que deducimos</span>
+        <span class="pill">Nivel crítico · lo que opinamos y valoramos</span>
+      </div>
+
+      <div class="note cultura">🌎 <b>Un recurso intercultural.</b> Este REDA integra los saberes del pueblo Makaguán (Hitnü) con las estrategias de lectura de la escuela. Las narraciones se construyeron de forma respetuosa, con la participación de los sabedores ancestrales, e incluyen únicamente conocimientos que la comunidad considera que se pueden compartir.</div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ MÓDULO 1 ============ -->
+<div class="page" id="m1">
+  <div class="wrap">
+    <div class="mod-hero mh1">
+      <div class="crumb">Estación 1 · Nivel literal</div>
+      <h2>🏞️ El Territorio que Habla</h2>
+      <div class="obj">Vas a practicar la <b>comprensión literal</b>: encontrar la información que el texto dice de forma explícita, como nombres, lugares y datos.</div>
+    </div>
+
+    <div class="step"><div class="n nm1">1</div><div><h3>Leemos nuestro territorio</h3><small>Lectura comprensiva</small></div></div>
+    <div class="panel">
+      <span class="by">★ Relato recreado con la orientación de los sabedores</span>
+      <div class="lectura">
+        <span class="titulo">El territorio que nos cuida</span>El pueblo Makaguán vive en el departamento de Arauca, cerca de los ríos Ele, Lipa y Cuiloto. Allí, entre la sabana abierta y el bosque de galería que crece junto al agua, las familias siembran su conuco. En el conuco crecen el maíz, el plátano y la yuca, que alimentan a toda la comunidad.
+
+Cada mañana, los niños caminan hasta la escuela de El Vigía. En el camino escuchan el canto de las aves y ven la garza pescar en la orilla. Los mayores dicen que el río es como un abuelo: da de comer, da agua y enseña a quien lo sabe escuchar.
+
+Por eso la comunidad cuida el territorio. No corta los árboles que dan sombra al agua, ni ensucia el río donde nadan los peces. Cuidar el territorio es cuidar la vida de todos.<span class="firma">— Narración intercultural para grado 5°, Institución Educativa Indígena El Vigía.</span></div>
+    </div>
+
+    <div class="step"><div class="n nm1">2</div><div><h3>Aprendemos viendo: los niveles de lectura</h3><small>Video educativo</small></div></div>
+    <div class="panel">
+      <a class="video-link" href="https://www.youtube.com/watch?v=sjPND6xYuTo" target="_blank" rel="noopener" title="Ver el video en YouTube">
+        <img src="https://img.youtube.com/vi/sjPND6xYuTo/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/sjPND6xYuTo/hqdefault.jpg'" alt="Miniatura del video sobre niveles de comprensión lectora" loading="lazy">
+        <span class="veil"></span><span class="yt">▶ YouTube</span><span class="play"></span><span class="cta"><b>▶ Clic aquí para ver el video</b></span>
+      </a>
+      <div class="src-tag">🎬 Fuente: YouTube — “Niveles de comprensión lectora con ejemplo de lectura”.</div>
+    </div>
+
+    <div class="step"><div class="n nm1">3</div><div><h3>Comprendo lo que el texto dice</h3><small>Actividad interactiva</small></div></div>
+    <div class="panel">
+      <span class="lvl lvl-lit">Nivel literal</span>
+      <div class="quiz" id="m1-quiz"></div>
+      <div class="feedback" id="m1-fb"></div>
+    </div>
+
+    <div class="step"><div class="n nm1">4</div><div><h3>Exploramos: recurso del Ministerio</h3><small>Colombia Aprende</small></div></div>
+    <div class="panel">
+      <a class="res-link" href="https://contenidosparaaprender.colombiaaprende.edu.co/G_5/L/MG/MG_L_G05_U01_L01.pdf" target="_blank" rel="noopener">
+        <span class="men">MEN<br>Col.<br>Aprende</span>
+        <span><b>Comprensión de lectura · Grado 5°</b><small>Contenidos para Aprender (Lenguaje). Actividades para leer y comprender textos.</small></span>
+      </a>
+      <div class="write-card" style="margin-top:14px">
+        <label>✍️ Escribe con tus palabras: ¿por qué la comunidad cuida el río?</label>
+        <textarea class="escribe" data-key="m1-resp" placeholder="La comunidad cuida el río porque..."></textarea>
+        <div class="tools">
+          <button class="btn btn-maiz" onclick="descargar('m1-resp','estacion1-territorio')">⬇️ Guardar mi trabajo</button>
+          <span class="counter" data-count="m1-resp">0 palabras</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modnav">
+      <button onclick="go('inicio')"><small>Volver al</small>🏠 Inicio</button>
+      <button onclick="go('m2')"><small>Siguiente estación</small>🌽 El Origen del Maíz →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MÓDULO 2 ============ -->
+<div class="page" id="m2">
+  <div class="wrap">
+    <div class="mod-hero mh2">
+      <div class="crumb">Estación 2 · Mito de origen</div>
+      <h2>🌽 El Origen del Maíz</h2>
+      <div class="obj">Leerás un <b>mito de origen</b> y aprenderás a reconocer su orden: cómo empieza, qué pasa en el medio y cómo termina.</div>
+    </div>
+
+    <div class="step"><div class="n nm2">1</div><div><h3>Leemos un mito de origen</h3><small>Lectura y secuencia</small></div></div>
+    <div class="panel">
+      <span class="by">★ Relato recreado con la orientación de los sabedores</span>
+      <div class="lectura" style="border-left-color:var(--m2)">
+        <span class="titulo">El regalo del maíz</span>Hace mucho tiempo, cuentan los mayores, llegó una época difícil en la que la tierra no daba alimento y la comunidad pasaba hambre. Una niña salió a caminar junto al río buscando qué comer para su familia.
+
+Mientras descansaba a la orilla, una garza dejó caer de su pico unos granos amarillos y brillantes. La niña los guardó con cuidado y los llevó hasta su casa, sin saber qué eran.
+
+Una abuela sabia le dijo que sembrara los granos en el conuco y que esperara con paciencia. La niña sembró, cuidó la tierra y esperó. Con las lluvias, brotaron unas plantas altas y verdes: era el maíz.
+
+Desde entonces, el maíz alimenta a la comunidad. Por eso, cuando se cosecha, las familias agradecen al territorio y comparten el alimento con todos.<span class="firma">— Relato recreado con fines educativos a partir del aprecio Makaguán por el conuco y el maíz.</span></div>
+    </div>
+
+    <div class="step"><div class="n nm2">2</div><div><h3>Aprendemos viendo: ¿qué es un mito?</h3><small>Video educativo</small></div></div>
+    <div class="panel">
+      <a class="video-link" href="https://www.youtube.com/watch?v=F38ohnpy4dI" target="_blank" rel="noopener" title="Ver el video en YouTube">
+        <img src="https://img.youtube.com/vi/F38ohnpy4dI/hqdefault.jpg" alt="Miniatura del video sobre qué son los mitos y leyendas" loading="lazy">
+        <span class="veil"></span><span class="yt">▶ YouTube</span><span class="play"></span><span class="cta"><b>▶ Clic aquí para ver el video</b></span>
+      </a>
+      <div class="src-tag">🎬 Fuente: YouTube — “¿Qué son los mitos y leyendas? Vídeo para niños”.</div>
+    </div>
+
+    <div class="step"><div class="n nm2">3</div><div><h3>Ordeno la historia</h3><small>Actividad interactiva · secuencia</small></div></div>
+    <div class="panel">
+      <p>Arrastra los hechos del relato para dejarlos en el orden correcto. Luego toca <b>Comprobar</b>.</p>
+      <ul class="order-list" id="m2-order"></ul>
+      <div class="tools">
+        <button class="btn btn-rio" onclick="checkOrder()">✅ Comprobar</button>
+        <button class="btn btn-soft" onclick="shuffleOrder()">🔀 Mezclar otra vez</button>
+      </div>
+      <div class="feedback" id="m2-fb"></div>
+    </div>
+
+    <div class="step"><div class="n nm2">4</div><div><h3>Exploramos: recurso del Ministerio</h3><small>Colombia Aprende</small></div></div>
+    <div class="panel">
+      <a class="res-link" href="https://contenidosparaaprender.colombiaaprende.edu.co/G_5/L/MG/MG_L_G05_U04_L03.pdf" target="_blank" rel="noopener">
+        <span class="men">MEN<br>Col.<br>Aprende</span>
+        <span><b>Textos narrativos · Grado 5°</b><small>Contenidos para Aprender (Lenguaje). Mitos, leyendas y otros relatos.</small></span>
+      </a>
+      <div class="note cultura" style="margin-top:14px">🌽 <b>Sabías que…</b> el maíz, el plátano y la yuca que crecen en el conuco son la base de la alimentación de muchas familias Makaguán. Sembrar el conuco es también una forma de cuidar la cultura.</div>
+    </div>
+
+    <div class="modnav">
+      <button onclick="go('m1')"><small>Estación anterior</small>← 🏞️ El Territorio</button>
+      <button onclick="go('m3')"><small>Siguiente estación</small>🐢 Las Huellas en la Sabana →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MÓDULO 3 ============ -->
+<div class="page" id="m3">
+  <div class="wrap">
+    <div class="mod-hero mh3">
+      <div class="crumb">Estación 3 · Nivel inferencial</div>
+      <h2>🐢 Las Huellas en la Sabana</h2>
+      <div class="obj">Vas a practicar la <b>comprensión inferencial</b>: ser un detective que deduce lo que el texto no dice, usando las pistas.</div>
+    </div>
+
+    <div class="step"><div class="n nm3">1</div><div><h3>Leemos siguiendo pistas</h3><small>Lectura inferencial</small></div></div>
+    <div class="panel">
+      <span class="by">★ Relato recreado con la orientación de los sabedores</span>
+      <div class="lectura" style="border-left-color:var(--m3)">
+        <span class="titulo">El rastro junto al agua</span>Una tarde, Numa caminaba por la sabana con su abuelo, un sabedor que conocía cada rincón del territorio. El sol bajaba y el aire se sentía fresco.
+
+—Mira —dijo el abuelo, señalando el barro de la orilla—. Aquí estuvo bebiendo agua un animal grande y pesado. Dejó huellas profundas y se metió al monte.
+
+Más adelante encontraron cáscaras de huevo rotas sobre la arena tibia, cerca del agua quieta. Numa sonrió: sabía que algún animal del río acababa de nacer allí.
+
+De pronto, una garza levantó el vuelo con un pez en el pico. El abuelo no dijo nada, pero Numa entendió por qué el ave había estado tan quieta entre las plantas.<span class="firma">— Narración intercultural para grado 5°, Institución Educativa Indígena El Vigía.</span></div>
+    </div>
+
+    <div class="step"><div class="n nm3">2</div><div><h3>Aprendemos viendo: hacer inferencias</h3><small>Video educativo</small></div></div>
+    <div class="panel">
+      <a class="video-link" href="https://www.youtube.com/watch?v=Xykur_RUZsU" target="_blank" rel="noopener" title="Ver el video en YouTube">
+        <img src="https://img.youtube.com/vi/Xykur_RUZsU/hqdefault.jpg" alt="Miniatura del video sobre inferencias para niños" loading="lazy">
+        <span class="veil"></span><span class="yt">▶ YouTube</span><span class="play"></span><span class="cta"><b>▶ Clic aquí para ver el video</b></span>
+      </a>
+      <div class="src-tag">🎬 Fuente: YouTube — “Inferencias: ejercicios para niños”.</div>
+    </div>
+
+    <div class="step"><div class="n nm3">3</div><div><h3>Deduzco con las pistas</h3><small>Actividad interactiva</small></div></div>
+    <div class="panel">
+      <span class="lvl lvl-inf">Nivel inferencial</span>
+      <div class="quiz" id="m3-quiz"></div>
+      <div class="feedback" id="m3-fb"></div>
+    </div>
+
+    <div class="step"><div class="n nm3">4</div><div><h3>Mi turno de inferir</h3><small>Respuesta escrita</small></div></div>
+    <div class="panel">
+      <div class="write-card">
+        <label>✍️ ¿Qué momento del día crees que era? Escribe la pista del texto que te ayudó a deducirlo.</label>
+        <textarea class="escribe" data-key="m3-resp" placeholder="Creo que era... porque el texto dice que..."></textarea>
+        <div class="tools">
+          <button class="btn btn-maiz" onclick="descargar('m3-resp','estacion3-inferencia')">⬇️ Guardar mi trabajo</button>
+          <span class="counter" data-count="m3-resp">0 palabras</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modnav">
+      <button onclick="go('m2')"><small>Estación anterior</small>← 🌽 El Origen del Maíz</button>
+      <button onclick="go('m4')"><small>Siguiente estación</small>🔥 La Palabra de los Mayores →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MÓDULO 4 ============ -->
+<div class="page" id="m4">
+  <div class="wrap">
+    <div class="mod-hero mh4">
+      <div class="crumb">Estación 4 · Oralidad y comparación</div>
+      <h2>🔥 La Palabra de los Mayores</h2>
+      <div class="obj">Vas a comparar dos formas de guardar el conocimiento: la <b>tradición oral</b> de los mayores y los <b>textos escritos</b> de la escuela.</div>
+    </div>
+
+    <div class="step"><div class="n nm4">1</div><div><h3>Leemos sobre la palabra que se hereda</h3><small>Lectura reflexiva</small></div></div>
+    <div class="panel">
+      <span class="by">★ Relato recreado con la orientación de los sabedores</span>
+      <div class="lectura" style="border-left-color:var(--m4)">
+        <span class="titulo">Las historias del fogón</span>Antes de que existieran los libros en la comunidad, el conocimiento viajaba de boca en boca. Por las noches, alrededor del fogón, los mayores contaban historias del territorio, de los animales y del origen de las cosas. Los niños escuchaban con atención, porque escuchar bien era la forma de aprender.
+
+Así, un mismo relato pasaba del abuelo al padre, y del padre al hijo, como un regalo que nunca se acaba. La voz de los mayores guardaba la memoria de todo el pueblo Makaguán.
+
+Hoy también leemos esas historias en la escuela, escritas en hojas y pantallas. La palabra hablada y la palabra escrita se dan la mano: las dos cuidan la memoria y nos ayudan a comprender quiénes somos.<span class="firma">— Narración intercultural para grado 5°, Institución Educativa Indígena El Vigía.</span></div>
+    </div>
+
+    <div class="step"><div class="n nm4">2</div><div><h3>Aprendemos viendo: cuento, mito, leyenda y fábula</h3><small>Video educativo</small></div></div>
+    <div class="panel">
+      <a class="video-link" href="https://www.youtube.com/watch?v=KhW7nVVJy8A" target="_blank" rel="noopener" title="Ver el video en YouTube">
+        <img src="https://img.youtube.com/vi/KhW7nVVJy8A/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/KhW7nVVJy8A/hqdefault.jpg'" alt="Miniatura del video sobre diferencias entre cuento, mito, leyenda y fábula" loading="lazy">
+        <span class="veil"></span><span class="yt">▶ YouTube</span><span class="play"></span><span class="cta"><b>▶ Clic aquí para ver el video</b></span>
+      </a>
+      <div class="src-tag">🎬 Fuente: YouTube — “Diferencias entre cuento, mito, leyenda y fábula”.</div>
+    </div>
+
+    <div class="step"><div class="n nm4">3</div><div><h3>Comparo: ¿oral o escrito?</h3><small>Actividad interactiva</small></div></div>
+    <div class="panel">
+      <p>Lee cada frase y decide si corresponde a la <b>tradición oral</b> de los mayores o a un <b>texto escrito</b>.</p>
+      <div class="clasif" id="m4-clasif"></div>
+      <div class="feedback" id="m4-fb"></div>
+    </div>
+
+    <div class="step"><div class="n nm4">4</div><div><h3>Recojo la palabra de un mayor</h3><small>Actividad de creación</small></div></div>
+    <div class="panel">
+      <p>Pregúntale a un mayor, a tu abuela o a un sabedor por una historia del territorio. Escríbela aquí con tus palabras para que no se pierda.</p>
+      <div class="write-card">
+        <label>🔥 La historia que me contaron</label>
+        <input class="escribe" data-key="m4-quien" placeholder="¿Quién te la contó? (abuela, sabedor, mamá...)">
+        <label style="margin-top:14px">✍️ La historia</label>
+        <textarea class="escribe" data-key="m4-hist" style="min-height:170px" placeholder="Me contaron que..."></textarea>
+        <div class="tools">
+          <button class="btn btn-maiz" onclick="descargarVarios(['m4-quien','m4-hist'],'estacion4-palabra-mayores')">⬇️ Guardar mi trabajo</button>
+          <button class="btn btn-soft" onclick="imprimir()">🖨️ Imprimir</button>
+          <span class="counter" data-count="m4-hist">0 palabras</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modnav">
+      <button onclick="go('m3')"><small>Estación anterior</small>← 🐢 Las Huellas</button>
+      <button onclick="go('m5')"><small>Siguiente estación</small>🗣️ Mi Voz Intercultural →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MÓDULO 5 ============ -->
+<div class="page" id="m5">
+  <div class="wrap">
+    <div class="mod-hero mh5">
+      <div class="crumb">Estación 5 · Nivel crítico · Cierre</div>
+      <h2>🗣️ Mi Voz Intercultural</h2>
+      <div class="obj">Vas a practicar la <b>comprensión crítica</b>: dar tu opinión con argumentos y crear un texto propio inspirado en tu cultura.</div>
+    </div>
+
+    <div class="step"><div class="n nm5">1</div><div><h3>Leemos para pensar y opinar</h3><small>Lectura crítica</small></div></div>
+    <div class="panel">
+      <span class="by">★ Texto de cierre intercultural</span>
+      <div class="lectura" style="border-left-color:var(--m5)">
+        <span class="titulo">¿Por qué seguir contando nuestras historias?</span>El pueblo Makaguán ha cuidado su territorio y su palabra durante muchas generaciones. Sus historias enseñan a respetar el río, a compartir el alimento y a escuchar a los mayores. Pero hoy, con tantas pantallas y mensajes nuevos, algunas de estas historias corren el riesgo de olvidarse.
+
+Aprender a leer no es solo entender lo que dicen los libros de la escuela: también es valorar lo que dicen las voces de nuestra comunidad. Cuando leemos con sentido crítico, podemos decidir qué queremos conservar, qué queremos compartir con el mundo y qué nos gustaría cambiar.
+
+Tú también tienes una voz. Lo que piensas y lo que escribes ayuda a que la cultura siga viva.<span class="firma">— Texto de cierre, REDA «Las Voces del Río».</span></div>
+    </div>
+
+    <div class="step"><div class="n nm5">2</div><div><h3>Aprendemos viendo: los niveles de lectura</h3><small>Video educativo</small></div></div>
+    <div class="panel">
+      <a class="video-link" href="https://www.youtube.com/watch?v=AVqbdnh6_yA" target="_blank" rel="noopener" title="Ver el video en YouTube">
+        <img src="https://img.youtube.com/vi/AVqbdnh6_yA/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/AVqbdnh6_yA/hqdefault.jpg'" alt="Miniatura del video sobre niveles de comprensión lectora" loading="lazy">
+        <span class="veil"></span><span class="yt">▶ YouTube</span><span class="play"></span><span class="cta"><b>▶ Clic aquí para ver el video</b></span>
+      </a>
+      <div class="src-tag">🎬 Fuente: YouTube — “Niveles de comprensión lectora: literal, inferencial, crítico y creativo”.</div>
+    </div>
+
+    <div class="step"><div class="n nm5">3</div><div><h3>Doy mi opinión con argumentos</h3><small>Actividad interactiva</small></div></div>
+    <div class="panel">
+      <span class="lvl lvl-cri">Nivel crítico</span>
+      <div class="quiz" id="m5-quiz"></div>
+      <div class="feedback" id="m5-fb"></div>
+    </div>
+
+    <div class="step"><div class="n nm5">4</div><div><h3>Evaluación final: mi texto intercultural</h3><small>Creación de cierre</small></div></div>
+    <div class="panel">
+      <p>Escribe un texto corto (mínimo seis líneas) sobre tu territorio, tu comunidad o una enseñanza de los mayores que te gustaría que nadie olvidara. Puedes contar una historia, describir un lugar o dar tu opinión.</p>
+      <div class="write-card">
+        <label>🗣️ Título de mi texto</label>
+        <input class="escribe" data-key="m5-titulo" placeholder="Escribe aquí el título...">
+        <label style="margin-top:14px">✍️ Mi texto</label>
+        <textarea class="escribe" data-key="m5-texto" style="min-height:200px" placeholder="Yo quiero contar que..."></textarea>
+        <div class="tools">
+          <button class="btn btn-maiz" onclick="descargarVarios(['m5-titulo','m5-texto'],'estacion5-mi-voz')">⬇️ Guardar mi texto</button>
+          <button class="btn btn-soft" onclick="imprimir()">🖨️ Imprimir</button>
+          <span class="counter" data-count="m5-texto">0 palabras</span>
+        </div>
+      </div>
+      <div class="note">🎉 <b>¡Felicidades!</b> Al terminar este texto recorriste las cinco estaciones de <i>Las Voces del Río</i>. Guarda todas tus creaciones en tu <b>portafolio digital</b>.</div>
+    </div>
+
+    <div class="modnav">
+      <button onclick="go('m4')"><small>Estación anterior</small>← 🔥 La Palabra de los Mayores</button>
+      <button onclick="go('eval')"><small>Ver</small>📊 Evaluación →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EVALUACIÓN ============ -->
+<div class="page" id="eval">
+  <div class="wrap">
+    <div class="mod-hero" style="background:linear-gradient(135deg,#1f7a8c,#155e6b)">
+      <div class="crumb">Evaluación de la comprensión lectora</div>
+      <h2>📊 ¿Cómo sabemos que comprendemos mejor?</h2>
+      <div class="obj">Valoramos la lectura en tres niveles y acompañamos el proceso con el portafolio, la autoevaluación y la palabra de la comunidad.</div>
+    </div>
+
+    <section style="padding-top:30px">
+      <h2 style="color:var(--rio-osc)">Los tres niveles de comprensión lectora</h2>
+      <div class="feature">
+        <div class="box"><h4><span class="ico">🔎</span> Nivel literal</h4><p>Reconocer la información que el texto dice de forma explícita: personajes, lugares, hechos y datos.</p></div>
+        <div class="box"><h4><span class="ico">🧩</span> Nivel inferencial</h4><p>Deducir lo que el texto no dice directamente, uniendo las pistas con lo que ya sabemos.</p></div>
+        <div class="box"><h4><span class="ico">⚖️</span> Nivel crítico</h4><p>Valorar el texto, dar una opinión con argumentos y relacionarlo con la propia cultura y la vida.</p></div>
+      </div>
+
+      <h2 style="color:var(--rio-osc);margin-top:40px">El portafolio y la evaluación intercultural</h2>
+      <p class="lead">Cada texto que guardas (con el botón <b>⬇️ Guardar mi trabajo</b>) entra a tu portafolio digital. Allí ves cómo avanzas. La valoración no es solo del docente: también participan la autoevaluación, la lectura entre compañeros y la palabra de los sabedores, que cuidan que la cultura se represente con respeto.</p>
+      <div class="feature">
+        <div class="box"><h4><span class="ico">🪞</span> Autoevaluación</h4><p>¿Qué entendí bien? ¿Qué parte del texto me costó más?</p></div>
+        <div class="box"><h4><span class="ico">🤝</span> Lectura entre pares</h4><p>Un compañero comenta tu trabajo y te ayuda a comprender mejor.</p></div>
+        <div class="box"><h4><span class="ico">🧓</span> Palabra de los sabedores</h4><p>Los mayores verifican que los saberes Makaguán se cuenten de forma apropiada.</p></div>
+      </div>
+
+      <h2 style="color:var(--rio-osc);margin-top:40px">Recursos abiertos del Ministerio</h2>
+      <a class="res-link" href="https://www.colombiaaprende.edu.co/contenidos-para-aprender" target="_blank" rel="noopener"><span class="men">MEN<br>Col.<br>Aprende</span><span><b>Contenidos para Aprender</b><small>Lenguaje · Grado Quinto (MEN).</small></span></a>
+      <a class="res-link" href="https://www.mineducacion.gov.co/1759/w3-propertyvalue-55310.html" target="_blank" rel="noopener"><span class="men">MEN<br>Etno-<br>educación</span><span><b>Etnoeducación</b><small>Educación para grupos étnicos y proyectos educativos comunitarios (MEN).</small></span></a>
+    </section>
+
+    <div class="modnav">
+      <button onclick="go('inicio')"><small>Volver al</small>🏠 Inicio</button>
+      <button onclick="go('m1')"><small>Repasar desde la</small>🏞️ Estación 1 →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>Las Voces del Río</b> · Recurso Educativo Digital Abierto (REDA) intercultural<br>
+      <small>Institución Educativa Indígena El Vigía · Arauquita, Arauca · Pueblo Makaguán (Hitnü) · Comprensión lectora, Grado 5°</small><br>
+      <span class="cc">🔓 Recurso abierto · uso educativo · Creative Commons BY-NC-SA</span>
+    </div>
+    <div style="text-align:right">
+      <small>Construido con la participación de los sabedores ancestrales de la comunidad.<br>
+      Maestría en TIC para la Educación · Universidad de Investigación y Desarrollo (UDI).</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- navegación ---------- */
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('show',p.id===id));
+  document.querySelectorAll('#menu button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- guardar / contador ---------- */
+const store={};
+function countWords(t){const s=t.trim();return s?s.split(/\s+/).length:0;}
+document.querySelectorAll('.escribe').forEach(el=>{
+  el.addEventListener('input',()=>{
+    store[el.dataset.key]=el.value;
+    const c=document.querySelector('[data-count="'+el.dataset.key+'"]');
+    if(c) c.textContent=countWords(el.value)+' palabras';
+  });
+});
+function valOf(k){const el=document.querySelector('[data-key="'+k+'"]');return el?el.value:'';}
+function bajar(nombre,texto){
+  const cab='Las Voces del Río — Comprensión lectora · Grado 5°\nEstudiante: ____________________   Fecha: ____________\n\n';
+  const blob=new Blob([cab+texto],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nombre+'.txt';
+  document.body.appendChild(a);a.click();a.remove();
+}
+function descargar(k,n){const t=valOf(k);if(!t.trim()){alert('✏️ Primero escribe tu respuesta.');return;}bajar(n,t);}
+function descargarVarios(keys,n){const p=keys.map(valOf).filter(v=>v.trim());if(!p.length){alert('✏️ Primero escribe tu respuesta.');return;}bajar(n,p.join('\n\n'));}
+function imprimir(){window.print();}
+
+/* ---------- MCQ reutilizable ---------- */
+function buildQuiz(containerId, fbId, preguntas){
+  const c=document.getElementById(containerId); let done=0;
+  c.innerHTML=preguntas.map((p,i)=>{
+    const ops=p.opts.map((o,j)=>`<button class="opt" data-q="${i}" data-j="${j}">${o}</button>`).join('');
+    return `<div class="pregunta">${i+1}. ${p.q}</div>${ops}`;
+  }).join('');
+  c.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const i=+btn.dataset.q, j=+btn.dataset.j;
+      const group=c.querySelectorAll('.opt[data-q="'+i+'"]');
+      if([...group].some(b=>b.classList.contains('ok')))return;
+      const fb=document.getElementById(fbId);
+      if(j===preguntas[i].ok){
+        btn.classList.add('ok');group.forEach(b=>b.classList.add('disabled'));done++;
+        fb.textContent='¡Correcto! 🌟';fb.className='feedback win';
+        if(done===preguntas.length)fb.textContent='¡Excelente! Respondiste muy bien toda la actividad. 🏆';
+      }else{
+        btn.classList.add('bad');setTimeout(()=>btn.classList.remove('bad'),500);
+        fb.textContent='Vuelve a leer el texto y busca la pista. 💭';fb.className='feedback';
+      }
+    });
+  });
+}
+
+/* M1 literal */
+buildQuiz('m1-quiz','m1-fb',[
+  {q:'¿Cerca de qué ríos vive el pueblo Makaguán según el texto?', opts:['Ríos Ele, Lipa y Cuiloto','Ríos Magdalena y Cauca','El mar Caribe'], ok:0},
+  {q:'¿Qué se siembra en el conuco?', opts:['Café y caña','Maíz, plátano y yuca','Solo flores'], ok:1},
+  {q:'¿A qué comparan los mayores el río?', opts:['A una montaña','A un abuelo que da de comer','A una nube'], ok:1}
+]);
+
+/* M3 inferencial */
+buildQuiz('m3-quiz','m3-fb',[
+  {q:'Por las huellas profundas en el barro, ¿qué se puede deducir del animal?', opts:['Era pequeño y liviano','Era grande y pesado','Era un ave'], ok:1},
+  {q:'Las cáscaras de huevo rotas en la arena dejan inferir que…', opts:['Alguien comió huevos fritos','Un animal del río acababa de nacer allí','No había nada'], ok:1},
+  {q:'¿Por qué la garza estaba quieta entre las plantas?', opts:['Estaba dormida','Esperaba para pescar','Tenía frío'], ok:1}
+]);
+
+/* M5 crítico */
+buildQuiz('m5-quiz','m5-fb',[
+  {q:'¿Cuál es la idea principal que defiende el texto de cierre?', opts:['Que los libros son mejores que los mayores','Que vale la pena conservar y compartir las historias propias','Que las pantallas no sirven para nada'], ok:1},
+  {q:'Leer con sentido crítico significa, sobre todo…', opts:['Repetir lo que dice el texto','Valorar el texto y dar una opinión con argumentos','Leer muy rápido'], ok:1}
+]);
+
+/* ---------- M2 ordenar secuencia ---------- */
+const m2parts=[
+  {h:'1',t:'Llegó una época difícil y la comunidad pasaba hambre.'},
+  {h:'2',t:'Una niña salió a caminar junto al río buscando alimento.'},
+  {h:'3',t:'Una garza dejó caer unos granos amarillos y la niña los guardó.'},
+  {h:'4',t:'Una abuela sabia le dijo que los sembrara en el conuco.'},
+  {h:'5',t:'Brotó el maíz y desde entonces alimenta a la comunidad.'}
+];
+function shuffleOrder(){
+  const arr=[...m2parts].sort(()=>Math.random()-.5);
+  const ul=document.getElementById('m2-order');
+  ul.innerHTML=arr.map(p=>`<li draggable="true" data-h="${p.h}"><span class="h">≡</span><div>${p.t}</div></li>`).join('');
+  attachDrag(); document.getElementById('m2-fb').textContent='';
+}
+function attachDrag(){
+  const ul=document.getElementById('m2-order');let dragEl=null;
+  ul.querySelectorAll('li').forEach(li=>{
+    li.addEventListener('dragstart',()=>{dragEl=li;li.classList.add('drag');});
+    li.addEventListener('dragend',()=>li.classList.remove('drag'));
+    li.addEventListener('dragover',e=>{e.preventDefault();
+      const a=[...ul.children];
+      const after=a.find(c=>c!==dragEl && e.clientY<c.getBoundingClientRect().top+c.offsetHeight/2);
+      if(after)ul.insertBefore(dragEl,after); else ul.appendChild(dragEl);
+    });
+  });
+}
+function checkOrder(){
+  const ul=document.getElementById('m2-order');const fb=document.getElementById('m2-fb');
+  const order=[...ul.children].map(li=>li.dataset.h);
+  const ok=order.join('')==='12345';
+  ul.querySelectorAll('li').forEach((li,i)=>li.classList.toggle('correct',li.dataset.h===String(i+1)));
+  if(ok){fb.textContent='¡Perfecto! Ese es el orden del relato. 🌽🏆';fb.className='feedback win';}
+  else{fb.textContent='Todavía no. Recuerda cómo empieza y cómo termina la historia. 🔁';fb.className='feedback';}
+}
+
+/* ---------- M4 clasificar oral/escrito ---------- */
+const m4items=[
+  {t:'Se cuenta de noche, alrededor del fogón.', ok:'Oral'},
+  {t:'Se guarda en hojas y pantallas.', ok:'Escrito'},
+  {t:'Pasa del abuelo al padre y del padre al hijo, de voz en voz.', ok:'Oral'},
+  {t:'Se puede leer muchas veces tal como quedó escrito.', ok:'Escrito'},
+  {t:'Necesita que alguien la recuerde para no perderse.', ok:'Oral'}
+];
+let m4done=0;
+function buildClasif(){
+  const c=document.getElementById('m4-clasif');
+  c.innerHTML=m4items.map((it,i)=>`
+    <div class="item"><p>${it.t}</p>
+      <div class="ops">
+        <button data-i="${i}" data-v="Oral">🔥 Tradición oral</button>
+        <button data-i="${i}" data-v="Escrito">📄 Texto escrito</button>
+      </div></div>`).join('');
+  c.querySelectorAll('.ops button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const i=+btn.dataset.i; const fb=document.getElementById('m4-fb');
+      const group=btn.parentElement.querySelectorAll('button');
+      if([...group].some(b=>b.classList.contains('ok')))return;
+      if(btn.dataset.v===m4items[i].ok){
+        btn.classList.add('ok');group.forEach(b=>b.style.pointerEvents='none');m4done++;
+        fb.textContent='¡Muy bien! 🌟';fb.className='feedback win';
+        if(m4done===m4items.length)fb.textContent='¡Excelente! Distingues la palabra hablada de la escrita. 🏆';
+      }else{
+        btn.classList.add('bad');setTimeout(()=>btn.classList.remove('bad'),500);
+        fb.textContent='Piensa: ¿esta frase necesita una voz o un papel? 💭';fb.className='feedback';
+      }
+    });
+  });
+}
+
+/* init */
+shuffleOrder();
+buildClasif();
+</script>
+</body>
+</html>
